@@ -82,7 +82,6 @@ public class CloudwatchLogsSink extends AbstractSink implements Configurable {
             List<InputLogEvent> logEventList = new ArrayList<InputLogEvent>();
 
             for(int i = 0; i < batchEventsLimit; i++){
-
                 Event event;
 
                 // if we have a buffered event take that first
@@ -136,10 +135,9 @@ public class CloudwatchLogsSink extends AbstractSink implements Configurable {
 
         } catch (Throwable t) {
             txn.rollback();
-
             logger.error("error", t);
-            // Log exception, handle individual exceptions as needed
 
+            // Log exception, handle individual exceptions as needed
             status = Status.BACKOFF;
 
             // re-throw all Errors
