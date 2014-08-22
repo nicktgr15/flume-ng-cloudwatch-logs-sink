@@ -1,0 +1,13 @@
+* Deal with event if its > 32 bytes
+* AWSClient - credentials switch to the provider chain
+* Also refactor so handle stream creation during process() call
+* Add logging
+* Handle rate limiting if going too fast
+* Move batchSizeLimit
+       batchEventsLimit to config and use defaults
+* Config validation
+* Message parsing of headers similar to elasticsearch sink.
+* Flume specific monitoring.
+* Unit tests and integration tests.
+
+
