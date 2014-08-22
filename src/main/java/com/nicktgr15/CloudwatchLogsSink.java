@@ -2,12 +2,24 @@ package com.nicktgr15;
 
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.logs.AWSLogsClient;
-import com.amazonaws.services.logs.model.*;
+import com.amazonaws.services.logs.model.CreateLogGroupRequest;
+import com.amazonaws.services.logs.model.CreateLogStreamRequest;
+import com.amazonaws.services.logs.model.DescribeLogGroupsRequest;
+import com.amazonaws.services.logs.model.DescribeLogGroupsResult;
+import com.amazonaws.services.logs.model.DescribeLogStreamsRequest;
+import com.amazonaws.services.logs.model.DescribeLogStreamsResult;
+import com.amazonaws.services.logs.model.InputLogEvent;
+import com.amazonaws.services.logs.model.PutLogEventsRequest;
+import com.amazonaws.services.logs.model.PutLogEventsResult;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.flume.*;
+import org.apache.flume.Channel;
+import org.apache.flume.Context;
+import org.apache.flume.EventDeliveryException;
+import org.apache.flume.Transaction;
 import org.apache.flume.conf.Configurable;
 import org.apache.flume.sink.AbstractSink;
+import org.apache.flume.Event;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -79,7 +91,7 @@ public class CloudwatchLogsSink extends AbstractSink implements Configurable {
             txn.begin();
 
             int batchSize = 0;
-            List<InputLogEvent> logEventList = new ArrayList<InputLogEvent>();
+            List<InputLogEvent> logEventList = new ArrayList<>();
 
             for(int i = 0; i < batchEventsLimit; i++){
                 Event event;
