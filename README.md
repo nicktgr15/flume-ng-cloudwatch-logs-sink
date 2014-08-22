@@ -6,7 +6,7 @@ Installation
 
 1. ```mnv clean package```
 2. copy generated ```flume-ng-cloudwatch-logs-sink``` jar under flume lib directory
-3. copy ```aws java sdk``` provided dependency jar under flume lib directory (```wget http://central.maven.org/maven2/com/amazonaws/aws-java-sdk/1.8.9.1/aws-java-sdk-1.8.9.1.jar```)
+3. copy ```aws java sdk``` "provided scope" dependency jar under flume lib directory (```wget http://central.maven.org/maven2/com/amazonaws/aws-java-sdk/1.8.9.1/aws-java-sdk-1.8.9.1.jar```)
 
 Example Config
 --------------
